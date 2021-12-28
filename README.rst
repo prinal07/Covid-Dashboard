@@ -101,7 +101,8 @@ Activating Virtual Environment:
  
 ```
 C:\Users\username\foldername> source *name of virtual environment*/bin/activate (FOR MAC AND LINUX)
-
+```
+```
 C:\Users\username\foldername> *name of virtual environment*\Scripts\activate.bat  (FOR WINDOWS)
 ```
    
