@@ -62,7 +62,7 @@ Required Installations
 
 
 Using Terminal or Command Prompt, navigate to the downloaded COVID DASHBOARD folder.
- ```
+```
  C:\Users\username> cd Desktop\Covid Dashboard
 ```
 
