@@ -1,0 +1,5 @@
+2021-12-28 00:11:12,617:covid_news_handling:ERROR: Unable to request news from NEWS API; INCORRECT API KEY
+Traceback (most recent call last):
+  File "C:\Users\prina\Desktop\New Continuous Assessment\docs\source\pythonfiles\covid_news_handling.py", line 48, in news_API_request
+    "apiKey=" + news_data["apiKey"]
+KeyError: 'apiKey'

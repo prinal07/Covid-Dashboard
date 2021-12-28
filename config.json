@@ -1,0 +1,17 @@
+{
+    "covid_request_data": {
+        "local_request_location": "Exeter",
+        "local_req_location_type": "ltla",
+        "nation_request_location": "England",
+        "nation_req_location_type": "nation"
+    },
+    "news_data": {
+        "covid_terms": "Covid COVID-19 coronavirus",
+        "apiKey": "9f5b1d91729e49dc89dfdca75579288c"
+    },
+    "interface_settings": {
+        "max_articles_displayed": 4,
+        "max_updates_displayed": 8,
+        "logo": "logo.png"
+    }
+}

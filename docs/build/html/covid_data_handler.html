@@ -1,0 +1,232 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>covid_data_handler module &#8212; EM1400 Continuous Assessment 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="covid_news_handling module" href="covid_news_handling.html" />
+    <link rel="prev" title="pythonfiles" href="modules.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-covid_data_handler">
+<span id="covid-data-handler-module"></span><h1>covid_data_handler module<a class="headerlink" href="#module-covid_data_handler" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="covid_data_handler.covid_API_request">
+<span class="sig-prename descclassname"><span class="pre">covid_data_handler.</span></span><span class="sig-name descname"><span class="pre">covid_API_request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Exeter'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'ltla'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#covid_data_handler.covid_API_request" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description: Returns up-to-date COVID-19 Data from the Public Health England API as a list of dictionaries.</p>
+<blockquote>
+<div><dl class="simple">
+<dt>Arguments:</dt><dd><p>location (str): String value of Location for which COVID-19 data needs to requested.
+location_type (str): String value of Location Type, used to differentiate requests for national and local data.</p>
+</dd>
+<dt>Returns:</dt><dd><p>covid_data (list[dict]): List of dictionaries, each dictionary holds COVID-19 data of 1 day.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="covid_data_handler.parse_csv_data">
+<span class="sig-prename descclassname"><span class="pre">covid_data_handler.</span></span><span class="sig-name descname"><span class="pre">parse_csv_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">csv_filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#covid_data_handler.parse_csv_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description: Returns a List with each line of the file as an individual element.</p>
+<blockquote>
+<div><dl class="simple">
+<dt>Arguments:</dt><dd><p>csv_filename (str): File name as String.</p>
+</dd>
+<dt>Returns:</dt><dd><p>lines (list[str]): Covid Data as a List of Strings, where each String is the data of one day.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="covid_data_handler.plus_24_hours">
+<span class="sig-prename descclassname"><span class="pre">covid_data_handler.</span></span><span class="sig-name descname"><span class="pre">plus_24_hours</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">update_interval</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#covid_data_handler.plus_24_hours" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description: Calculates time difference for scheduling updates, and adds 24 hours to it; for repeats.</p>
+<blockquote>
+<div><dl class="simple">
+<dt>Arguments:</dt><dd><p>update_interval (str): String value of the time for the scheduled update, in 24 hour format.</p>
+</dd>
+<dt>Returns:</dt><dd><p>repeat_update_time (float): Time difference in seconds</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="covid_data_handler.process_covid_csv_data">
+<span class="sig-prename descclassname"><span class="pre">covid_data_handler.</span></span><span class="sig-name descname"><span class="pre">process_covid_csv_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">covid_csv_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#covid_data_handler.process_covid_csv_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description: Returns caclulated values of the Covid Cases in the past week, Total Deaths and Hospital Cases.</p>
+<blockquote>
+<div><dl class="simple">
+<dt>Arguments:</dt><dd><p>covid_csv_data (list[str]): Covid Data as a List of Strings, where each String is the data of one day.</p>
+</dd>
+<dt>Returns:</dt><dd><p>week_cases (int): Integer value of the Covid Cases in the last 7 days.
+total_deaths (str): String value of the Total Deaths.
+hopsital_cases (str): String value of the Hospital Cases.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="covid_data_handler.process_covid_data">
+<span class="sig-prename descclassname"><span class="pre">covid_data_handler.</span></span><span class="sig-name descname"><span class="pre">process_covid_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">covid_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#covid_data_handler.process_covid_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description: Returns a list of processed and calculated data from the COVID-19 data.</p>
+<blockquote>
+<div><dl class="simple">
+<dt>Arguments:</dt><dd><p>covid_data (list[dict]): List of dictionaries, each dictionary holds COVID-19 data of 1 day.</p>
+</dd>
+<dt>Returns:</dt><dd><p>processed_data (list): List of calculated values of Total Covid Cases in the last week, Location, Location Type, Hospital Cases and Total Deaths.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="covid_data_handler.schedule_covid_updates">
+<span class="sig-prename descclassname"><span class="pre">covid_data_handler.</span></span><span class="sig-name descname"><span class="pre">schedule_covid_updates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">update_interval</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">update_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#covid_data_handler.schedule_covid_updates" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description: Creates an event for the covid-data update</p>
+<blockquote>
+<div><dl class="simple">
+<dt>Arguments:</dt><dd><p>update_interval (str): String value of the time for the Scheduled Update, in 24 hour format.
+update_name (str): String value of the name of the Scheduled Update.</p>
+</dd>
+<dt>Returns:</dt><dd><p>None</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="covid_data_handler.time_difference">
+<span class="sig-prename descclassname"><span class="pre">covid_data_handler.</span></span><span class="sig-name descname"><span class="pre">time_difference</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">update_interval</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#covid_data_handler.time_difference" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description: Returns time difference between the Scheduled time from the argument and the current time in seconds.</p>
+<blockquote>
+<div><dl class="simple">
+<dt>Arguments:</dt><dd><p>update_interval (str): String value of the time for the scheduled update, in 24 hour format.</p>
+</dd>
+<dt>Returns:</dt><dd><p>time_diff_in_secs (float): Time difference in seconds.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="covid_data_handler.update_covid_data">
+<span class="sig-prename descclassname"><span class="pre">covid_data_handler.</span></span><span class="sig-name descname"><span class="pre">update_covid_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#covid_data_handler.update_covid_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description: Updates global lists of Local and National COVID-19 data.</p>
+<blockquote>
+<div><dl class="simple">
+<dt>Arguments:</dt><dd><p>None</p>
+</dd>
+<dt>Returns:</dt><dd><p>None</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">EM1400 Continuous Assessment</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">pythonfiles</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">covid_data_handler module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="covid_news_handling.html">covid_news_handling module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interface.html">interface module</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">pythonfiles</a><ul>
+      <li>Previous: <a href="modules.html" title="previous chapter">pythonfiles</a></li>
+      <li>Next: <a href="covid_news_handling.html" title="next chapter">covid_news_handling module</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Prinal Patel.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/covid_data_handler.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
