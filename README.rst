@@ -62,13 +62,15 @@ Required Installations
 
 
 Using Terminal or Command Prompt, navigate to the downloaded COVID DASHBOARD folder.
+
 ```
- C:\Users\username> cd Desktop\Covid Dashboard
+C:\Users\username> cd Desktop\Covid Dashboard
 ```
 
 If done correctly, it should look like this:
+
 ```
- C:\Users\username> cd Desktop\Covid Dashboard> 
+C:\Users\username> cd Desktop\Covid Dashboard> 
 ```
 
 Before installing the dependencies, it is recommended to create a Virtual Environment. When you are using a virtual environment, 
@@ -78,8 +80,9 @@ To set up the Virtual Environment refer to instructions in the next section.
 
 
 To install all the required dependencies, please run:
+
 ```
- C:\Users\username> cd Desktop\Covid Dashboard> pip install - r requirements.txt 
+C:\Users\username> cd Desktop\Covid Dashboard> pip install - r requirements.txt 
 ```
 
 
