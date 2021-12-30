@@ -95,7 +95,8 @@ To install, please run:
 C:\Users\username> cd Deskop/foldername
 ```
 
-Create a virtual environment in the Project Folder using :
+Create a virtual environment in the Project Folder using :\
+
 ```
 C:\Users\username\foldername> python -m venv *name of virtual environment*
 ```
@@ -105,11 +106,13 @@ Activating Virtual Environment:
 ```
 C:\Users\username\foldername> source *name of virtual environment*/bin/activate (FOR MAC AND LINUX)
 ```
+
 ```
 C:\Users\username\foldername> *name of virtual environment*\Scripts\activate.bat  (FOR WINDOWS)
 ```
    
 Deactivating Virtual Environment:
+
 ```
 C:\Users\username\foldername> deactivate
 ```
@@ -132,7 +135,9 @@ Navigate to the index.html file.
 
 Once downloaded, navigate to the Covid-Dashboard folder:
 
-   Covid Dashboard\docs\build\index.html
+```
+Covid Dashboard\docs\build\index.html
+```
 
 index.html will direct you to a webpage with information on all of the modules! 
 
