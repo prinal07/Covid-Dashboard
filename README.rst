@@ -12,13 +12,16 @@ and News API to import necessary COVID-19 data and news data for the dashboards.
 
 The dashboard's features: 
    > Is integrated with the configuration file (config.json)
+   
    > Displays the following data:
       - Total Cases in the past week (National and Local)
       - Total Hospital Cases (National)
       - Total Deaths (National)
       - News articles filtered to the provided covid_terms in the configuration file 
       - Scheduled Updates 
+      
    > Scheduling updates to the News and Covid-data separately. 
+   
    > Removing articles and Cancelling Scheduled Updates. 
 
 This is combined with a numerous of tests and logging to make the program accountable and makes it possible to trace behaviour and recover state. 
