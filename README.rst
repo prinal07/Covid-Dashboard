@@ -128,8 +128,13 @@ for the news articles.
 Using all the modules 
 .....................................
 
+Navigate to the index.html file. 
 
-Visit the documentation 
+Once downloaded, navigate to the Covid-Dashboard folder:
+
+   Covid Dashboard\docs\build\index.html
+
+index.html will direct you to a webpage with information on all of the modules! 
 
 
 
