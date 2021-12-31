@@ -1,5 +1,6 @@
 import json
 import logging
+import time
 from typing import Callable
 from flask import Flask
 from flask import app
@@ -133,7 +134,7 @@ def submit_updates() -> Callable:
             "title": scheduled_name,
             "content": "",
             "process": "",
-            "update_check": "",
+            "time": "",
         }
 
         processes_list = []
@@ -180,6 +181,8 @@ def submit_updates() -> Callable:
                 news_24hr_update_process.start()
 
                 update_dictionary["process"] = processes_list
+                update_dictionary["time"] = (int(time.time() + plus_24_hours(scheduled_time)))
+
                 sched_updates_list.append(update_dictionary.copy())
 
                 logger.info(
@@ -208,6 +211,8 @@ def submit_updates() -> Callable:
                 news_update_process.start()
 
                 update_dictionary["process"] = processes_list
+                update_dictionary["time"] = (int(time.time() + time_difference(scheduled_time))) 
+
                 sched_updates_list.append(update_dictionary.copy())
 
                 logger.info("News and Covid-data update successfully added")
@@ -239,6 +244,7 @@ def submit_updates() -> Callable:
                     covid_24hr_update_process.start()
 
                     update_dictionary["process"] = processes_list
+                    update_dictionary["time"] = (int(time.time() + plus_24_hours(scheduled_time))) 
                     sched_updates_list.append(update_dictionary.copy())
 
                     logger.info(
@@ -260,6 +266,8 @@ def submit_updates() -> Callable:
                     covid_update_process.start()
 
                     update_dictionary["process"] = processes_list
+                    update_dictionary["time"] = (int(time.time() + time_difference(scheduled_time))) 
+
                     sched_updates_list.append(update_dictionary.copy())
 
                     logger.info("Covid-data update successfully added")
@@ -288,6 +296,8 @@ def submit_updates() -> Callable:
                     news_24hr_update_process.start()
 
                     update_dictionary["process"] = processes_list
+                    update_dictionary["time"] = (int(time.time() + plus_24_hours(scheduled_time))) 
+
                     sched_updates_list.append(update_dictionary.copy())
 
                     logger.info("News update successfully added (repeated update)")
@@ -307,6 +317,8 @@ def submit_updates() -> Callable:
                     news_update_process.start()
 
                     update_dictionary["process"] = processes_list
+                    update_dictionary["time"] = (int(time.time() + time_difference(scheduled_time))) 
+
                     sched_updates_list.append(update_dictionary.copy())
 
                     logger.info("News update successfully added")
@@ -351,6 +363,22 @@ def submit_updates() -> Callable:
             current_page_number = local_page_number
             news_list = local_list
             news_logger.info(" New articles successfully added.")
+
+        process_ctr = 0
+        for updates in sched_updates_list:
+            temp_time = updates["time"]
+            print(temp_time)
+            print(time.time())
+            if temp_time < int(time.time()):
+                temp_list = updates["process"]
+                for process in temp_list:
+                    process.terminate()
+                    logger.info(" Update/Updates automatically terminated")
+                sched_updates_list.pop(process_ctr)
+            else: 
+                process_ctr = process_ctr + 1
+
+        #If updates are finished and not cancelled manually, they will be cancelled automatically within a minute. 
 
     return interface()
 
